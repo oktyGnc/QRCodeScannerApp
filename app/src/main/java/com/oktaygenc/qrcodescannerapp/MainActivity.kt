@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -20,6 +22,7 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var cameraExecutor: ExecutorService
+    private var isProcessingQR = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,14 +70,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleQRCodeResult(url: String) {
+        if (isProcessingQR) return
+
         runOnUiThread {
+            isProcessingQR = true
             try {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(intent)
+                Toast.makeText(this, "QR Kod okundu: $url", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Toast.makeText(this, "Geçersiz URL", Toast.LENGTH_SHORT).show()
             }
+            Handler(Looper.getMainLooper()).postDelayed({
+                isProcessingQR = false
+            }, 3000)
         }
+    }
+    override fun onPause() {
+        super.onPause()
+        isProcessingQR = true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isProcessingQR = false
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {

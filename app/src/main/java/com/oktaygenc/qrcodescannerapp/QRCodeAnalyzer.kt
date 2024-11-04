@@ -25,8 +25,7 @@ class QRCodeAnalyzer(private val onQRCodeFound: (String) -> Unit) : ImageAnalysi
             isScanning.set(true)
             val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
 
-            scanner.process(image)
-                .addOnSuccessListener { barcodes ->
+            scanner.process(image).addOnSuccessListener { barcodes ->
                     for (barcode in barcodes) {
                         if (barcode.valueType == com.google.mlkit.vision.barcode.common.Barcode.TYPE_URL) {
                             barcode.url?.url?.let { url ->
@@ -38,8 +37,7 @@ class QRCodeAnalyzer(private val onQRCodeFound: (String) -> Unit) : ImageAnalysi
                             }
                         }
                     }
-                }
-                .addOnCompleteListener {
+                }.addOnCompleteListener {
                     isScanning.set(false)
                     imageProxy.close()
                 }

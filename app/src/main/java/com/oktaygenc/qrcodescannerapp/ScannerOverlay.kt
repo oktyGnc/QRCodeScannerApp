@@ -11,7 +11,7 @@ import android.view.View
 class ScannerOverlay @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : View(context, attrs, defStyleAttr) {
 
     private val squarePaint = Paint().apply {
@@ -50,8 +50,20 @@ class ScannerOverlay @JvmOverloads constructor(
 
         // Yarı saydam overlay çizimi
         canvas.drawRect(0f, 0f, width, scannerRect.top, overlayPaint) // Üst
-        canvas.drawRect(0f, scannerRect.top, scannerRect.left, scannerRect.bottom, overlayPaint) // Sol
-        canvas.drawRect(scannerRect.right, scannerRect.top, width, scannerRect.bottom, overlayPaint) // Sağ
+        canvas.drawRect(
+            0f,
+            scannerRect.top,
+            scannerRect.left,
+            scannerRect.bottom,
+            overlayPaint
+        ) // Sol
+        canvas.drawRect(
+            scannerRect.right,
+            scannerRect.top,
+            width,
+            scannerRect.bottom,
+            overlayPaint
+        ) // Sağ
         canvas.drawRect(0f, scannerRect.bottom, width, height, overlayPaint) // Alt
 
         // Ana kare çizimi
@@ -59,19 +71,67 @@ class ScannerOverlay @JvmOverloads constructor(
 
         // Köşe çizgileri
         // Sol üst köşe
-        canvas.drawLine(scannerRect.left, scannerRect.top, scannerRect.left + cornerLength, scannerRect.top, cornerPaint)
-        canvas.drawLine(scannerRect.left, scannerRect.top, scannerRect.left, scannerRect.top + cornerLength, cornerPaint)
+        canvas.drawLine(
+            scannerRect.left,
+            scannerRect.top,
+            scannerRect.left + cornerLength,
+            scannerRect.top,
+            cornerPaint
+        )
+        canvas.drawLine(
+            scannerRect.left,
+            scannerRect.top,
+            scannerRect.left,
+            scannerRect.top + cornerLength,
+            cornerPaint
+        )
 
         // Sağ üst köşe
-        canvas.drawLine(scannerRect.right - cornerLength, scannerRect.top, scannerRect.right, scannerRect.top, cornerPaint)
-        canvas.drawLine(scannerRect.right, scannerRect.top, scannerRect.right, scannerRect.top + cornerLength, cornerPaint)
+        canvas.drawLine(
+            scannerRect.right - cornerLength,
+            scannerRect.top,
+            scannerRect.right,
+            scannerRect.top,
+            cornerPaint
+        )
+        canvas.drawLine(
+            scannerRect.right,
+            scannerRect.top,
+            scannerRect.right,
+            scannerRect.top + cornerLength,
+            cornerPaint
+        )
 
         // Sol alt köşe
-        canvas.drawLine(scannerRect.left, scannerRect.bottom - cornerLength, scannerRect.left, scannerRect.bottom, cornerPaint)
-        canvas.drawLine(scannerRect.left, scannerRect.bottom, scannerRect.left + cornerLength, scannerRect.bottom, cornerPaint)
+        canvas.drawLine(
+            scannerRect.left,
+            scannerRect.bottom - cornerLength,
+            scannerRect.left,
+            scannerRect.bottom,
+            cornerPaint
+        )
+        canvas.drawLine(
+            scannerRect.left,
+            scannerRect.bottom,
+            scannerRect.left + cornerLength,
+            scannerRect.bottom,
+            cornerPaint
+        )
 
         // Sağ alt köşe
-        canvas.drawLine(scannerRect.right - cornerLength, scannerRect.bottom, scannerRect.right, scannerRect.bottom, cornerPaint)
-        canvas.drawLine(scannerRect.right, scannerRect.bottom - cornerLength, scannerRect.right, scannerRect.bottom, cornerPaint)
+        canvas.drawLine(
+            scannerRect.right - cornerLength,
+            scannerRect.bottom,
+            scannerRect.right,
+            scannerRect.bottom,
+            cornerPaint
+        )
+        canvas.drawLine(
+            scannerRect.right,
+            scannerRect.bottom - cornerLength,
+            scannerRect.right,
+            scannerRect.bottom,
+            cornerPaint
+        )
     }
 }

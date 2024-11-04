@@ -5,8 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -48,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
             val preview = Preview.Builder().build().also {
                 it.surfaceProvider = binding.viewFinder.surfaceProvider
-                }
+            }
 
             val imageAnalyzer = ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build().also {
@@ -75,17 +73,27 @@ class MainActivity : AppCompatActivity() {
         runOnUiThread {
             isProcessingQR = true
             try {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                startActivity(intent)
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+                val returnIntent = Intent(this, MainActivity::class.java)
+                returnIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+                val chooserIntent = Intent.createChooser(browserIntent, "URL'i açmak için seçin")
+
+                val intents = arrayOf(returnIntent, chooserIntent)
+                startActivities(intents)
+
+                finish()
+
                 Toast.makeText(this, "QR Kod okundu: $url", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Toast.makeText(this, "Geçersiz URL", Toast.LENGTH_SHORT).show()
-            }
-            Handler(Looper.getMainLooper()).postDelayed({
                 isProcessingQR = false
-            }, 3000)
+            }
         }
     }
+
+
     override fun onPause() {
         super.onPause()
         isProcessingQR = true

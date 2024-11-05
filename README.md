@@ -22,27 +22,27 @@ https://drive.google.com/file/d/1dxbtvv0Vx5DPQbb1wNeZyr6zCFXwtu8a/view?usp=drive
 
 
 ## :point_down: Kullanılan Teklonojiler
-1. AndroidX Camera
+1. **AndroidX Camera**
    androidx.camera:camera-camera2:1.3.0: Android'in kamera API'sini kullanarak kamera işlevselliği sağlamak için kullanılır.
    androidx.camera:camera-lifecycle:1.3.0: Kamera yaşam döngüsünü yönetmek için kullanılır.
    androidx.camera:camera-view:1.3.0: Kamera görüntüsünü kullanıcı arayüzünde göstermek için kullanılan bir bileşen.
-2. Google ML Kit
+2. **Google ML Kit**
    com.google.mlkit:barcode-scanning:17.2.0: Barkod ve QR kod tarama işlevselliği sağlamak için kullanılır. Bu kütüphane, görüntü analizi ve barkod tanıma işlemlerini gerçekleştirmek için kullanılır.
-3. Android View Binding
+3. **Android View Binding**
    View Binding: XML dosyalarındaki bileşenlere daha güvenli ve kolay erişim sağlamak için kullanılır. build.gradle dosyasında viewBinding true olarak ayarlanmıştır.
-4. Android Permissions
+4. **Android Permissions**
    Kamera İzni: Uygulama, kamera erişimi için izin talep eder. AndroidManifest.xml dosyasında android.permission.CAMERA izni belirtilmiştir.
-5. ConstraintLayout
+5. **ConstraintLayout**
    androidx.constraintlayout.widget.ConstraintLayout: Kullanıcı arayüzü bileşenlerini düzenlemek için kullanılan bir layout türüdür. Hem activity_main.xml hem de activity_scanner.xml dosyalarında kullanılmıştır.
-6. Kotlin
+6. **Kotlin**
    Uygulama, Android uygulama geliştirmek için Kotlin programlama dili ile yazılmıştır.
-7. ExecutorService
+7. **ExecutorService**
    Çoklu iş parçacığı yönetimi: QR kod analizi için arka planda çalışan iş parçacıkları oluşturmak için kullanılır.
-8. Custom View
+8. **Custom View**
    ScannerOverlay: QR kod tarayıcı ekranında özel bir overlay görüntülemek için kullanılan özel bir View sınıfı.
-9. Intent ve Activity
+9. **Intent ve Activity**
    Uygulama, farklı ekranlar arasında geçiş yapmak için Intent nesnelerini kullanır ve MainActivity ile ScannerActivity arasında geçiş yapar.
-10. Toast Mesajları
+10. **Toast Mesajları**
     Kullanıcıya bilgi vermek için Toast mesajları kullanılır.
 
 ## :pencil2: Dependency

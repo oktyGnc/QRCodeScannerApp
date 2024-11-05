@@ -1,8 +1,5 @@
 # <p align="center"> QR CODE SCANNER APP </p>  
 
-## 🎬 Video
-https://drive.google.com/file/d/1dxbtvv0Vx5DPQbb1wNeZyr6zCFXwtu8a/view?usp=drive_link
-<br>
 
 ## Uygulama Özellikleri
 
@@ -17,6 +14,12 @@ https://drive.google.com/file/d/1dxbtvv0Vx5DPQbb1wNeZyr6zCFXwtu8a/view?usp=drive
 - **Kullanıcı Dostu Arayüz**: Basit ve sezgisel bir arayüz ile kullanıcıların kolayca QR kod tarama işlemini gerçekleştirmesine olanak tanır.
 
 - **Hızlı Tarama**: QR kodları hızlı bir şekilde taramak için optimize edilmiştir.
+  
+
+## 🎬 Video
+https://drive.google.com/file/d/1dxbtvv0Vx5DPQbb1wNeZyr6zCFXwtu8a/view?usp=drive_link
+<br>
+
 
 ## :point_down: Kullanılan Teklonojiler
 1. AndroidX Camera
@@ -86,5 +89,5 @@ alias(libs.plugins.kotlin.android) apply false
 Projeyi bilgisayarınıza klonlamak için aşağıdaki komutu kullanın:
 
 ```bash
-git clone https://github.com/oktayGnc/
+git clone https://github.com/oktayGnc/QRCodeScannerApp
 ```
